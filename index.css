@@ -1,0 +1,119 @@
+body{
+    background: rgb(48,48,48);
+}
+
+.topbar{
+    margin: 0;
+    font-family: Ubuntu;
+    color: rgb(245,245,245);
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: pink;
+    position: fixed;
+    width: 97%;
+}
+
+.search{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-bar{
+    border-radius: 20px;
+    height: 30px;
+    width: 50vh;
+    margin: 5px;
+    padding-left: 8px;
+    align-items: flex-end;
+}
+
+.search-btn{
+    height: 30px;
+    border-radius: 20px;
+}
+
+.res{
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-card{
+    background-color: orchid;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    font-family: ubuntu;
+    color: white;
+    padding: 10px;
+    margin-top: 100px;
+    position: fixed;
+    height: 100vh;
+    width: 240px;
+}
+
+.profile-pic{
+    border-radius: 50px;
+    height: 200px;
+    width: 200px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.4);
+}
+
+.profile-name{
+    font-size: 25px;
+}
+
+.profile-header{
+    display: flex;
+    align-items: center;
+}
+
+.profile-header:hover{
+    background-color: bisque;
+    width: 30v;
+}
+
+.list{
+    list-style: none;
+    padding: 0;
+    
+}
+
+.repo-card{
+    margin: 15px;
+    padding: 20px;
+    padding-left: 25px;
+    border-radius: 10px;
+    height: 20vh;
+    background-color: rgba(13, 17, 23, 0.5);
+    display: inline-block;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 50vb;
+    margin-top: 115px;
+    margin-left: 280px;
+    font-family: Arial, Helvetica, sans-serif; 
+    color: white; 
+}
+
+.repo-card:hover{
+    box-shadow: 0 0 10px rgba(200,200,200,0.4);
+}
+
+.repo-title{
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px 0 5px 0;
+    margin: 5px;
+}
+
+.repo-about{
+    margin: 5px;
+}
+
+.error{
+    color: white;
+}
+
+

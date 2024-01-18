@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Profiler</title>
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="topbar">
+            <h1 class="search-head">GitHub LookUp</h1>
+            <div class="search">
+                <input class="search-bar" type="text" placeholder="Enter GitHub ID" id="g-username">
+                <button id="btn" class="search-btn">Search</button>  
+            </div>
+        </div>
+
+        <!-- GitHub Profile Details!! -->
+
+        <div class="res" id="res">
+            <div class="profile-card">
+                <img class="profile-pic" src="${data.avatar_url}"/>
+                <p class="profile-name">${data.name}</p>
+                <a class="profile-header" href="https://github.com/${data.login}">${data.login}</a>
+
+                <ul class="list">
+                    <li>${data.followers} followers</li>
+                    <li>${data.following} following</li>
+                    <li>${data.public_repos} repositories</li>
+                </ul>
+            </div>
+            <div class="repo-card">
+                <div class="repo-title">repo name</div>
+                <div>repo about</div>
+                <div>repo tags</div>
+            </div>
+        </div>        
+    <script src="scraper.js"></script>
+</body>
+</html>
