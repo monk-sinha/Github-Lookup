@@ -13,7 +13,7 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    position: fixed;
+    position: relative;
     width: 100%;
     height: auto;
 }
@@ -66,14 +66,13 @@ body{
     font-family: ubuntu;
     color: white;
     padding: 10px;
-    margin-top: 100px;
     position: fixed;
-    height: 100vh;
+    height: 410px;
     width: 240px;
 }
 
 .profile-pic{
-    border-radius: 50px;
+    border-radius: 100px;
     height: 200px;
     width: 200px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.4);
@@ -109,47 +108,53 @@ body{
     
 }
 
-.repo{
+.repo {
+    padding-left: 300px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    margin: 50px 0;
 }
 
-.repo-card{
+/* desiging repository info */
+.repo-card {
+    font-family: Ubuntu;
     padding: 20px;
     border-radius: 10px;
-    border: 2px solid white;
-    margin: 25px; 
+    background-color: rgb(31, 33, 36);
+    color: antiquewhite;
+    margin: 25px;
 }
 
-.repo-card:hover{
-    box-shadow: 0 0 10px rgba(200,200,200,0.4);
+/* designing repository heading  */
+.repo-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
-.repo-title{
-    font-weight: bold;
-    font-size: 20px;
-    padding: 5px 0 5px 0;
-    margin: 5px;
+/* designing repository paragraph */
+.repo-card p {
+    font-size: 14px;
+    margin: 10px 0;
+    font-weight: 700;
 }
 
-.repo-about{
-    margin: 5px;
+/* designing repository link  */
+.repo-card a {
+    text-decoration: none;
+    margin: 5px 0;
+    font-size: 17px;
+    font-weight: 700;
 }
 
-.error{
-    color: white;
+/* designing repository link hover */
+.repo-card a:hover {
+    text-decoration: underline;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
     .res{
         flex-direction: column;
         flex-shrink: 0;
         margin-top: 60px;
-    }
-
-    .profile-card{
-        align-items: center;
     }
 
     .topbar{
@@ -161,8 +166,12 @@ body{
     .profile-card {
         padding: 10px 5px;
         font-size: 16px;
-        align-items: center;
-        
+        align-items: center;    
+    }
+
+    .profile-header{
+        justify-content: center;
+        text-align: center;
     }
 
     .repo {
@@ -172,3 +181,22 @@ body{
 
 }
 
+@media (min-width: 768px) and (max-width: 992px) {
+    .repo{
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 550px){
+    .profile-card{
+        position: relative;
+        padding-top:0;
+        margin-top: 0;
+        padding-left: 70px
+    }
+    
+    .repo{
+        padding-top: 2px;
+        padding-left: 0
+    }
+}

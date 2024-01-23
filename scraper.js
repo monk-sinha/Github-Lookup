@@ -1,23 +1,14 @@
 const apiURL = 'https://api.github.com/users/';
 const bar = document.getElementById('g-username');
 const button = document.getElementById('btn');
-const repoCard = document.getElementById('repo');
+const repoCard = document.getElementById('repository');
 
-bar.addEventListener("keypress", e=>{
-    if(e.key === "Enter"){
-        e.preventDefault();
-        button.click();
-    }
-});
-
-button.addEventListener('click',showGitHubProfile);
-
-const createErrorCard = (message) => {
-    const cardHTML = `
-        <div class="repo-card"><h1>${message}</h1></div>
-    `;
-    document.getElementById('res').innerHTML = cardHTML;
-}
+const img = document.getElementById('img');
+const nameElement = document.getElementById('name');
+const portfolioElement = document.getElementById('uname');
+const followersElement = document.getElementById('followers');
+const followingElement = document.getElementById('following');
+const repoElement = document.getElementById('repo');
 
 function showGitHubProfile(){
     const username = bar.value;
@@ -25,48 +16,43 @@ function showGitHubProfile(){
 
     const request = async () =>{
         try{
-            const res = await fetch(url);
-            const data = await res.json();
-            const repositoriesData = await (await fetch(`${apiURL}${username}/repos`)).json();
-            if(data.message){
-                createErrorCard("Hmm, this profile doesn't exist..");
-                console.log('No profile sorry!')
-            }
-                document.getElementById("res").innerHTML = `
-                <div class="profile-card">
-                <img class="profile-pic" src="${data.avatar_url}"/>
-                <p class="profile-name">${data.name}</p>
-                <a class="profile-header" href="https://github.com/${data.login}">${data.login}</a>
-    
-                <ul class="list">
-                    <li>${data.followers} followers</li>
-                    <li>${data.following} following</li>
-                    <li>${data.public_repos} repositories</li>
-                </ul>
-                </div> 
-    
-                `;
-                document.getElementById('res').style.display = "grid";    
+            const response = await fetch(url);
+            const {avatar_url,name, login,html_url,followers,following,public_repos} = await response.json()
+            if(response.status === 404){
+                console.log('No profile sorry!');
+            } 
+            img.src = avatar_url;
+            nameElement.textContent = name;
+            portfolioElement.textContent = login;
+            portfolioElement.href = `${html_url}`;
+            followersElement.textContent = `${followers} followers`;
+            followingElement.textContent = `${following} following`;
+            repoElement.textContent = `${public_repos} repostories`;
+
+
+            document.getElementById('res').style.display = "grid";    
+
+            const repositoriesData = await (await fetch(`${url}/repos`)).json();
         
-                repositoriesData.forEach(repo => {
-                        const repoDiv = document.createElement('div');
-                        repoDiv.classList.add('repo-card');
+            repositoriesData.forEach(repo => {
+                const repoDiv = document.createElement('div');
+                repoDiv.classList.add('repo-card');
                       
-                        const repoTitle = document.createElement('h3');
-                        repoTitle.textContent = repo.name;
-                        repoDiv.appendChild(repoTitle);
+                const repoTitle = document.createElement('h3');
+                repoTitle.innerHTML = repo.name;    
+                repoDiv.appendChild(repoTitle);
                       
-                        const repoAbout = document.createElement('p');
-                        repoAbout.textContent = repo.description || 'No description available.';
-                        repoDiv.appendChild(repoAbout);
+                    const repoAbout = document.createElement('p');
+                    repoAbout.innerHTML = repo.description || 'No description available.';
+                    repoDiv.appendChild(repoAbout);
                       
-                        const repoURL = document.createElement('a');
-                        repoURL.href = repo.html_url;
-                        repoURL.textContent = 'View on GitHub';
-                        repoDiv.appendChild(repoURL);
+                    const repoURL = document.createElement('a');
+                    repoURL.href = repo.html_url;
+                    repoURL.innerHTML = 'View on GitHub';
+                    repoDiv.appendChild(repoURL);
                       
-                        repoCard.appendChild(repoDiv);
-                      });
+                repoCard.appendChild(repoDiv);
+                });
                       
             }catch (error) {
                 console.log('Error:', error);
@@ -75,6 +61,11 @@ function showGitHubProfile(){
     request();
     }
 
-
-
-
+ bar.addEventListener("keypress", e=>{
+    if(e.key === "Enter"){
+        e.preventDefault();
+        button.click();
+    }
+});
+    
+button.addEventListener('click',showGitHubProfile);
