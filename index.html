@@ -11,35 +11,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="wrapper">
         <div class="topbar">
             <h1 class="search-head">GitHub LookUp</h1>
             <div class="search">
                 <input class="search-bar" type="text" placeholder="Enter GitHub ID" id="g-username">
-                <button id="btn" class="search-btn">Search</button>  
+                <button id="btn" class="search-btn">
+                    <img class="search-img" src="./icons/searchw.svg">
+                </button>  
             </div>
         </div>
-
-        <!-- GitHub Profile Details!! -->
-
         <div class="res" id="res">
             <div class="profile-card">
-                <img class="profile-pic" src="${data.avatar_url}"/>
-                <p class="profile-name">${data.name}</p>
-                <a class="profile-header" href="https://github.com/${data.login}">${data.login}</a>
+                <img id='img' class="profile-pic"/>
+                <p id='name' class="profile-name"></p>
+                <a id='uname'class="profile-header"></a>
 
                 <ul class="list">
-                    <li>${data.followers} followers</li>
-                    <li>${data.following} following</li>
-                    <li>${data.public_repos} repositories</li>
+                    <li id="repo"></li>
+                    <li id="followers"></li>
+                    <li id="following"></li>
                 </ul>
             </div>
-            <div class="repo-card">
-                <div class="repo-title">repo name</div>
-                <div>repo about</div>
-                <div>repo tags</div>
-            </div>
+            <div id="repository" class="repo"></div>
         </div>        
     <script src="scraper.js"></script>
+    </div>
 </body>
 </html>
